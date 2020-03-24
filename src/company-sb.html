@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>企业社保</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .fr-content-div {
+            background-color: #FFFFFF;
+            margin-top: 117px;
+        }
+        
+        .fr-company-h {
+            width: 100%;
+            padding: 0px 40px;
+        }
+        
+        .fr-company-text {
+            width: 60%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-left: -24%;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #9D9D9D;
+            font-size: 14px;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .sb-item input {
+                width: 60%;
+            }
+            .sb-container {
+                width: 60%;
+            }
+            .sb-item {
+                margin-bottom: 20px;
+            }
+            .fr-company-h {
+                margin-bottom: 0px;
+            }
+        }
+        
+        @media screen and (max-width: 750px) {
+            .p-title {
+                margin-top: 10px;
+            }
+            #csb-form {
+                margin-top: 0px;
+            }
+            .fr-cbxx-btn {
+                margin-left: 4% !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #F8F9FA;">
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+        <!--End Main Header -->
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+        <div class="column sb-container fr-content-div">
+            <div class="fr-company-h">
+                <div class="row sb-item p-title">
+                    <div class="shuxian"></div>
+                    <span>企业参保</span>
+                </div>
+            </div>
+            <div class="column sb-info">
+                <form id="csb-form">
+
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">企业名称</span>
+                        <input name="companyName" class="form-control" type="text" placeholder="企业名称" required="required" />
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">联系姓名</span>
+                        <input name="contactName" class="form-control" type="text" placeholder="联系人姓名" required="required" />
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">手机号</span>
+                        <input name="contactPhone" class="form-control" type="text" placeholder="联系人手机" required="required" />
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">企业所在地</span>
+                        <div style="display: flex;">
+                            <select onchange="getLv2()" id="province" style="margin-right: 2px;" class="form-control s-city">
+								</select>
+
+                            <select name="companyLocation" id="city" class="city form-control s-city" style="border: 1px solid #DADADF; display: none;">
+
+								</select>
+
+                        </div>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">企业规模</span>
+                        <select name="companyScale" class="form-control col-6 col-sm-3">
+
+								<option>请选择企业规模</option>
+								<option>1-10人</option>
+
+								<option>10-50人</option>
+
+								<option>50-100人</option>
+
+								<option>500人以上</option>
+
+							</select>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">您的需求</span>
+                        <textarea name="needs" rows="5" class="form-control fr-company-text" type="text" placeholder="您的需求" required="required"></textarea>
+                    </div>
+                </form>
+            </div>
+            <button onclick="addCsb()" class="btn btn-primary save-sb fr-cbxx-btn">
+					提交
+				</button>
+        </div>
+
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="auto-container">
+                <div class="copyright">2015-2016 © 福建鼎天富人力资源有限公司 版权所有 闽ICP备18023690号</div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- End Main Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+    <script src="js/mock.js"></script>
+    <script src="js/handleFooter.js"></script>
+    <script src="js/utils.js" charset="UTF-8"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/login.js"></script>
+    <!-- <script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <script>
+        var currentShowCity = 0;
+        new Promise(function(resolve, reject) {
+            // 获取城市接口
+            getCity(resolve)
+        }).then(() => {
+            // 初始化省份选项
+            initProvinces()
+            handlePreloader()
+        })
+
+        function addCsb() {
+            var data = {};
+            var t = $('#csb-form').serializeArray();
+            $.each(t, function() {
+                data[this.name] = this.value;
+            });
+            console.log(data)
+            $.ajax({
+                url: baseUrl,
+                type: 'POST',
+                dataType: 'json',
+                data: `{"serviceId":"eu_2013V01addCompanyOrderApi","params": ${JSON.stringify(data)}}`,
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+                    if (data.returnCode == '1') {
+                        // alert('提交成功，将有工作人员与您联系')
+                        diyAlert('提交成功，将有工作人员与您联系', 'success')
+                    } else {
+                        // alert(data.returnParams)
+                        diyAlert('请检查填写信息是否符合规范', 'warning')
+                    }
+                },
+                error: function(returndata) {
+                    // alert(returndata);
+                    diyAlert('网络错误', 'warning')
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

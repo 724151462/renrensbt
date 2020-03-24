@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>价格</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+		<!--End Main Header -->
+
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+
+        <!--Appointment Box-->
+        <section class="appointment-box">
+            <div class="inner-box">
+                <div class="cross-icon"><span class="flaticon-cancel-1"></span></div>
+                <div class="title">
+                    <h2>Get Appointment</h2>
+                    <div class="separator"></div>
+                </div>
+
+                <!--Appointment Form-->
+                <div class="appointment-form">
+                    <form method="post" action="contact.html">
+
+                        <div class="form-group">
+                            <input type="text" name="text" value="" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" value="" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone" value="" placeholder="Phone no." required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="theme-btn btn-style-one">Submit now</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!--Contact Info Box-->
+                <div class="contact-info-box">
+                    <ul class="info-list">
+                        <li>alfena@yousite.com</li>
+                        <li>+(000) 000 0000</li>
+                    </ul>
+                    <ul class="social-list clearfix">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Linkedin</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        <!--End Consulting Form-->
+
+        <!-- Banner Section Three -->
+        <section class="banner-section-three">
+            <div class="auto-container">
+                <div class="row clearfix"></div>
+            </div>
+        </section>
+        <!--End Banner Section Three -->
+
+        <!-- Faq Page Section -->
+        <section class="faq-page-section">
+            <div class="outer-container">
+
+                <!--Faq Info Tabs-->
+                <div class="faq-info-tabs">
+                    <!--Faq Tabs-->
+                    <div class="faq-tabs tabs-box">
+
+                        <!--Tab Btns-->
+                        <ul class="tab-btns tab-buttons price-btn clearfix">
+                            <li pid="350000" id="350100" data-tab="#faq-started" class="tab-btn active-btn">福州</li>
+                            <li pid="350000" id="350200" data-tab="#faq-work" class="tab-btn">厦门</li>
+                            <li pid="110000" id="110101" data-tab="#faq-plugin" class="tab-btn">北京</li>
+							<li pid="440000" id="440300" data-tab="#sz" class="tab-btn">深圳</li>
+                        </ul>
+
+                        <!--Tabs Container-->
+                        <div class="tabs-content">
+
+                            <!--Tab / Active Tab-->
+                            <div class="tab active-tab" id="faq-started">
+                                <div class="content">
+                                    <div class="clearfix">
+
+                                        <!-- 明细表单 star -->
+                                        <div class="table-detail">
+
+                                        </div>
+                                        <!-- 明细表单 edn -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 确定支付按钮 -->
+                <center>
+                    <button type="button" onclick="toCb()" class="btn btn-lg btn-primary fr_btn_wi">去参保</button>
+                </center>
+            </div>
+        </section>
+        <!-- End Faq Page Section -->
+
+
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+    	<!-- Footer Bottom -->
+    	<div class="footer-bottom">
+    		<div class="auto-container">
+    			<div class="copyright">2015-2016 © 福建鼎天富人力资源有限公司 版权所有 闽ICP备18023690号</div>
+    		</div>
+    	</div>
+
+    </footer>
+
+    <!-- End Main Footer -->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mock.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/handleFooter.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
+    <script>
+		var pid='350000'
+		var city='350100'
+        $(window).on('load', function() {
+            console.log(baseUrl)
+            handlePreloader();
+            // enableMasonry();
+        });
+
+        function toCb() {
+            if (sessionStorage.getItem('login')) {
+                location.href = `person-sb.html?pid=${pid}&city=${city}`
+            } else {
+                $('#myModal').modal('show')
+            }
+        }
+        $('.price-btn').find('li').click((e) => {
+            $('.price-btn').find('li').removeClass('active-btn')
+            $(e.target).addClass('active-btn')
+            console.log($(e.target).attr('id'))
+			pid = $(e.target).attr('pid')
+			city = $(e.target).attr('id')
+            getPrice($(e.target).attr('id'))
+
+        })
+        getPrice(350100)
+
+        function getPrice(cityId) {
+            $.ajax({
+                // url: 'http://leideqiang.w3.luyouxia.net/oa/clientServices.do?iscrypt=1',
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                // async: false,
+                data: `{"serviceId":"eu_2013V01cityPriceApi","params": {'cityId':${cityId}}}`,
+                success: function(data) {
+                    var tdata = data.returnParams.price
+                    var personCbCost = (tdata.yanglao_person + tdata.yiliao_person + tdata.shiye_person +
+                        tdata.gongshang_person + tdata.shengyu_person + tdata.dabingyiliao_person + tdata.housing_person +
+                        tdata.canbaojin_person).toFixed(2)
+                    var companyCbCost = (tdata.yanglao_company + tdata.yiliao_company + tdata.shiye_company +
+                        tdata.gongshang_company + tdata.shengyu_company + tdata.dabingyiliao_company + tdata.housing_company +
+                        tdata.canbaojin_company).toFixed(2)
+                    var content = `<table class="table table-bordered fr_text_cen">
+													<thead class="fr_th">
+														<tr>
+															<th scope="col">险种</th>
+															<th scope="col">个人</th>
+															<th scope="col">公司</th>
+															<th scope="col">小结</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>养老</td>
+															<td>${tdata.yanglao_person}</td>
+															<td>${tdata.yanglao_company}</td>
+															<td>${(tdata.yanglao_person + tdata.yanglao_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>医疗</td>
+															<td>${tdata.yiliao_person}</td>
+															<td>${tdata.yiliao_company}</td>
+															<td>${(tdata.yiliao_person + tdata.yiliao_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>失业</td>
+															<td>${tdata.shiye_person}</td>
+															<td>${tdata.shiye_company}</td>
+															<td>${(tdata.shiye_person + tdata.shiye_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>工伤</td>
+															<td>${tdata.gongshang_person}</td>
+															<td>${tdata.gongshang_company}</td>
+															<td>${(tdata.gongshang_person + tdata.gongshang_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>生育</td>
+															<td>${tdata.shengyu_person}</td>
+															<td>${tdata.shengyu_company}</td>
+															<td>${(tdata.shengyu_person + tdata.shengyu_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>大病医疗</td>
+															<td>${tdata.dabingyiliao_person}</td>
+															<td>${tdata.dabingyiliao_company}</td>
+															<td>${(tdata.dabingyiliao_person + tdata.dabingyiliao_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>公积金</td>
+															<td>${tdata.housing_person}</td>
+															<td>${tdata.housing_company}</td>
+															<td>${(tdata.housing_person + tdata.housing_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td>残保金</td>
+															<td>${tdata.canbaojin_person}</td>
+															<td>${tdata.canbaojin_company}</td>
+															<td>${(tdata.canbaojin_person + tdata.canbaojin_company).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td><b>参保费</b></td>
+															<td>${personCbCost}</td>
+															<td>${companyCbCost}</td>
+															<td>${(Number(personCbCost) + Number(companyCbCost)).toFixed(2)}</td>
+														</tr>
+														<tr>
+															<td><b>管理费</b></td>
+															<td></td>
+															<td></td>
+															<td>${tdata.manager_cost}</td>
+														</tr>
+														<tr>
+															<td><b>实缴金额</b></td>
+															<td></td>
+															<td></td>
+															<td>${(Number(personCbCost) + Number(tdata.manager_cost) + Number(companyCbCost)).toFixed(2)}</td>
+														</tr>
+													</tbody>
+												</table>`
+                    $('.table-detail').html(content)
+
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

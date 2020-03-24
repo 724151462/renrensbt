@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>企业社保</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .fr-content-div {
+            background-color: #FFFFFF;
+            margin-top: 117px;
+            border-radius: 10px;
+        }
+        
+        .fr-company-h {
+            width: 100%;
+            padding: 0px 40px;
+        }
+        
+        .fr-company-text {
+            width: 60%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-left: -24%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-top: 50px;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #9D9D9D;
+            font-size: 14px;
+        }
+        
+        .sb-item {
+            line-height: 30px;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .sb-item input {
+                width: 60%;
+            }
+            .sb-container {
+                width: 60%;
+            }
+            .sb-item {
+                margin-bottom: 20px;
+            }
+            .fr-company-h {
+                margin-bottom: 0px;
+            }
+            .sb-info {
+                margin-top: 40px;
+                min-height: 0px;
+            }
+            .mod-btns {
+                width: 65%;
+            }
+        }
+        
+        @media screen and (max-width: 750px) {
+            .p-title {
+                margin-top: 10px;
+            }
+            #csb-form {
+                margin-top: 0px;
+            }
+            .fr-cbxx-btn {
+                margin-left: 4% !important;
+                margin-top: 50px;
+            }
+            #csb-form {
+                margin-top: 20px !important;
+            }
+            .mod-btns {
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #F6F6F6;">
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+        <!--End Main Header -->
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+        <div class="column sb-container fr-content-div">
+            <div class="fr-company-h">
+                <div class="row sb-item p-title">
+                    <div class="shuxian"></div>
+                    <span>信息修改</span>
+                </div>
+            </div>
+            <div class="column sb-info">
+                <form id="csb-form">
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">昵称：</span>
+                        <div class="fr-person-gr-xxx" id="userName"></div>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">是否参保：</span>
+                        <div class="fr-person-gr-xxx" id="isCb"></div>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">手机号：</span>
+                        <div class="fr-person-gr-xxx" id="mobile"></div>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">邮箱号：</span>
+                        <div class="fr-person-gr-xxx" id="email"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="row mod-btns" style="justify-content: space-around; padding-bottom: 20px;">
+                <button onclick="infoModify()" class="btn btn-primary">
+					修改
+                </button>
+                <button onclick="pwdModify()" class="btn btn-primary">
+					修改密码
+				</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+    <!-- Main Footer -->
+    @@include('footer.html')
+
+    <!-- End Main Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+    <script src="js/mock.js"></script>
+    <script src="js/utils.js" charset="UTF-8"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var currentShowCity = 0;
+        var userId = JSON.parse(sessionStorage.getItem('login')).useId
+        $(function() {
+            getUserInfo()
+        })
+
+        function getUserInfo() {
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                data: `{"serviceId":"eu_2013V01userInfoApi","params": {"userId": ${userId}}}}`,
+                success: function(data) {
+                    handlePreloader()
+                    $('#userName').text(data.returnParams.name)
+                    $('#isCb').text(data.returnParams.loginStyle)
+                    $('#mobile').text(data.returnParams.userName)
+                    $('#email').text(data.returnParams.email)
+                }
+            })
+        }
+
+        function addCsb() {
+            var data = {};
+            var t = $('#csb-form').serializeArray();
+            $.each(t, function() {
+                data[this.name] = this.value;
+            });
+        }
+
+        function infoModify() {
+            window.location.href = 'person-gr-xgxx.html?userId=' + userId
+        }
+
+        function pwdModify() {
+            window.location.href = 'person-pwd-modify.html?userId=' + userId
+        }
+    </script>
+</body>
+
+</html>

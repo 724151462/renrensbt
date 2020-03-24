@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Alfena Template | Homepage</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        .center-title {
+            padding: 20px;
+        }
+        
+        .fr-center-message-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .iframe-navtitle {
+                height: 40px;
+                line-height: unset;
+            }
+        }
+        
+        @media screen and (max-width: 750px) {}
+    </style>
+</head>
+
+<body style="overflow:hidden">
+    <!-- Preloader -->
+    <!-- <div class="preloader"></div> -->
+
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+    <div class="center-title">
+        <div class="iframe-navtitle">
+            <div class="shuxian"></div>
+            我的消息
+        </div>
+
+    </div>
+
+    <div class="fr-center-message-div">
+        <img src="./images/center-message.png" />
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+</body>
+<script type="text/javascript">
+	var baseUrl = 'http://www.rrsbt.com/clientServices.do?iscrypt=1'
+	    // var baseUrl = 'http://leideqiang.w3.luyouxia.net/oa/clientServices.do?iscrypt=1'
+	    // var baseUrl = 'http://leideqiang.w3.luyouxia.net/insurance/clientServices.do?iscrypt=1'
+    var userId = JSON.parse(sessionStorage.getItem('login')).useId
+    $.ajax({
+        url: baseUrl,
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        // jsonp: "callback",
+        data: `{"serviceId":"eu_2013V01paySuccessOrderApi","params": {'userId':${userId}}}`,
+        success: function(data) {
+            if (data.returnCode == 1) {
+
+            }
+        }
+    })
+</script>
+
+</html>

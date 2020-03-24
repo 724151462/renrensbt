@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人社保</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .fr-content-div {
+            background-color: #FFFFFF;
+            margin-top: 117px;
+            border-radius: 10px;
+        }
+        
+        .fr-company-h {
+            width: 100%;
+            padding: 0px 20px;
+            margin-bottom: 20px;
+        }
+        
+        .fr-company-text {
+            width: 60%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-left: -6%;
+        }
+        
+        .tc {
+            margin-top: 0px;
+            width: 120px;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #9D9D9D;
+            font-size: 14px;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .sb-item input {
+                width: 60%;
+            }
+            .sb-container {
+                width: 60%;
+            }
+            .sb-item {
+                margin-bottom: 20px;
+            }
+            .fr-company-h {
+                margin-bottom: 0px;
+            }
+            .sb-p1item {
+                margin-bottom: 50px;
+            }
+        }
+        
+        @media screen and (max-width: 750px) {
+            .fr-company-btn {
+                margin-left: 0%;
+            }
+            .p-title {
+                margin-top: 20px;
+            }
+            #csb-form {
+                margin-top: 0px;
+            }
+            .fr-company-h {
+                padding: 0px 23px;
+            }
+            .tc {
+                margin-top: 10px !important;
+                width: 80px !important;
+            }
+            .fr-cbxx-btn {
+                margin-left: 16% !important;
+            }
+            .sb-p1item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #F8F9FA;">
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+		<!--End Main Header -->
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+        <div class="column sb-container container fr-content-div">
+            <!-- <div class="fr-wid100"> -->
+            <div class="fr-company-h">
+                <div class="row sb-item p-title">
+                    <div class="shuxian"></div>
+                    <span>个人参保</span>
+                </div>
+            </div>
+
+            <form action="" onsubmit="return false;" id="cbrInfo">
+                <div class="row sb-item sb-p1item">
+                    <span class="fr-cbxx">企业所在地</span>
+                    <div style="display: flex;">
+                        <select onchange="getLv2()" id="province" style="margin-right: 2px;" class="form-control s-city">
+							</select>
+
+                        <select name="cityId" onchange="getTc()" id="city" class="city form-control s-city" style="border: 1px solid #DADADF; display: none;">
+
+							</select>
+
+                    </div>
+
+                </div>
+
+                <div class="row sb-item sb-p1item">
+                    <span class="fr-cbxx">参保人</span>
+                    <div class="cbr-list">
+                        <select name="id" id="cbrid" class="form-control" style="border: 1px solid #DADADF;">
+								<option class="cbr-op">请选择参保人</option>
+							</select>
+                    </div>
+                </div>
+                <div class="row sb-item sb-p1item">
+                    <span class="fr-cbxx">参保套餐</span>
+                    <div class="row tc-list">
+                        <!-- <div class="column tc tc-active">
+								<span>3个月</span>
+								<span>￥150/人</span>
+							</div>
+							<div class="column tc">
+								<span>6个月</span>
+								<span>￥240/人</span>
+							</div>
+							<div class="column tc">
+								<span>12个月</span>
+								<span>￥420/人</span>
+							</div> -->
+                    </div>
+                </div>
+            </form>
+
+            <!-- </div> -->
+            <button onclick="toInfo()" class="btn btn-primary save-sb fr-cbxx-btn">
+					下一步
+				</button>
+
+        </div>
+
+        <!--End pagewrapper-->
+
+        <!--Scroll to top-->
+        <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+    </div>
+	<div class="modal fade" id="toAddcbr" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content" style="margin: 0 auto; margin-top: 200px; width: 60vw;">
+	      <div class="modal-header">
+			<span>提示</span>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <p>您还未添加参保人，是否前往添加？</p>
+	      </div>
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-primary" onclick="toAdd()">是</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    <!-- Main Footer -->
+    <footer class="main-footer">
+    	<!-- Footer Bottom -->
+    	<div class="footer-bottom">
+    		<div class="auto-container">
+    			<div class="copyright">2015-2016 © 福建鼎天富人力资源有限公司 版权所有 闽ICP备18023690号</div>
+    		</div>
+    	</div>
+
+    </footer>
+
+    <!-- End Main Footer -->
+    <script src="js/jquery.js"></script>
+    <!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+    <script src="js/mock.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
+
+    <!-- <script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <script type="text/javascript">
+        var actMonth = ''
+        var actCost = ''
+        var chName = ''
+
+        function getTc(e) {
+
+            chName = $('#city').find("option:selected").text()
+            console.log($('#province').val(), $('#city').find("option:selected").text())
+            if (!getQueryVariable('pid')) {
+                openPreloader()
+            }
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                data: `{"serviceId":"eu_2013V01socialSePacApi","params": {"cityId":${$('#city').val()}}}`,
+                success: function(data) {
+                    handlePreloader()
+                    let content = ''
+                    for (let i = 0; i < data.returnParams.length; i++) {
+                        content += `<div class="column tc" onclick="tcSelect(this)" month="${data.returnParams[i].month}" cost="${data.returnParams[i].cost}">
+								<span>${data.returnParams[i].month}个月</span>
+								<span>${data.returnParams[i].cost}/人</span>
+							</div>`
+                    }
+                    $('.tc-list').html(content)
+                        // $(".tc").click(function() {
+                        // 	$(".tc").removeClass('tc-active')
+                        // 	$(this).addClass('tc-active')
+                        // 	actMonth = $(this).attr('month')
+                        // 	actCost = $(this).attr('cost')
+                        // })
+                    if (getQueryVariable('pid')) {
+                        tcSelect(getQueryVariable('month'))
+                    }
+                }
+            })
+        }
+
+        function tcSelect(e) {
+            console.log(typeof(e))
+            $(".tc").removeClass('tc-active')
+            if (typeof(e) == 'object') {
+                console.log(e)
+                $(e).addClass('tc-active')
+                actMonth = $(e).attr('month')
+                actCost = $(e).attr('cost')
+            } else {
+                for (let i = 0; i < $(".tc").length; i++) {
+                    if (getQueryVariable('month') == $(".tc").eq(i).attr('month')) {
+                        $(".tc").eq(i).addClass('tc-active')
+                        actMonth = $(".tc").eq(i).attr('month')
+                        actCost = $(".tc").eq(i).attr('cost')
+                    }
+                }
+            }
+        }
+
+        function getCbrlist(resolve) {
+            $.ajax({
+                url: baseUrl,
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: `{"serviceId":"eu_2013V01myInsureApi","params": {"useId": ${JSON.parse(sessionStorage.getItem('login')).useId}}}`,
+                success: function(data) {
+                    if (JSON.parse(data).returnParams == '参保人列表不存在'){
+						$("#toAddcbr").modal('show');
+					}
+					if (JSON.parse(data).returnCode != 0) {
+                        let ls = JSON.parse(data).returnParams
+                        for (let i = 0; i < ls.length; i++) {
+                            $(`<option value="${ls[i].universalid}">${ls[i].name}</option>`).insertAfter(".cbr-op");
+                        }
+                    }
+
+                    resolve()
+                },
+            })
+        }
+
+        let p1 = new Promise(function(resolve, reject) {
+            // 获取城市接口
+            getCity(resolve)
+        })
+        let p2 = new Promise(function(resolve, reject) {
+            // 获取参保人列表
+            getCbrlist(resolve)
+        })
+        Promise.all([p1, p2]).then((result) => {
+                // 初始化省份选项
+                initProvinces()
+                handlePreloader();
+            }).then(() => {
+                if (getQueryVariable('pid')) {
+                    $('#province').val(getQueryVariable('pid'))
+                    getLv2()
+                    $('#city').val(getQueryVariable('city'))
+                    getTc()
+                }
+				if (getQueryVariable('cbrid')) {
+				    $('#cbrid').val(getQueryVariable('cbrid'))
+				}
+            }).catch(() => {
+                alert('网络错误')
+            })
+            // $(".tc").click(function() {
+            // 	alert(1)
+            // 	$(".tc").removeClass('tc-active')
+            // 	$(this).addClass('tc-active')
+            // })
+
+        function toInfo() {
+            var data = {};
+            var t = $('#cbrInfo').serializeArray();
+            $.each(t, function() {
+                data[this.name] = this.value;
+            });
+            if (data.cityId == "城市") {
+                // alert('请选择参保城市')
+                diyAlert('请选择参保城市', 'warning')
+                return
+            }
+            if (data.id == "请选择参保人") {
+                // alert('请选择参保人')
+                diyAlert('请选择参保人', 'warning')
+                return
+            }
+            if (!actMonth) {
+                // alert('请选择参保套餐')
+                diyAlert('请选择参保套餐', 'warning')
+                return
+            }
+            console.log(JSON.stringify(data))
+            window.location.href = `person-sb-info.html?id=${data.id}&cityId=${data.cityId}&month=${actMonth}&cost=${actCost}&chName=${chName}`
+        }
+		function toAdd() {
+			sessionStorage.setItem('centerTab', 1)
+			window.location.href = 'center.html'
+		}
+    </script>
+
+</body>
+
+</html>

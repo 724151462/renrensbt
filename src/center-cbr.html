@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- inject:css -->
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom-animate.css">
+		<link rel="stylesheet" href="css/flaticon.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/hover.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/owl.css">
+		<link rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href="css/rMediaQuery.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/sui.nav.css">
+		<link rel="stylesheet" href="css/tabs.css">
+		<!-- endinject -->
+		<style type="text/css">
+			body::-webkit-scrollbar {
+				display: none
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div class="preloader" id="cbrPreload"></div> -->
+		<div class="iframe-wrapper">
+			<div class="center-title">
+				<div class="iframe-navtitle">
+					<div class="shuxian"></div>
+					我的参保人
+				</div>
+				<div style="color: #1296db" class="add-cbr" onclick="addCbr()">
+					<img src="images/plus.png" alt="">
+					<span>添加参保人</span>
+				</div>
+				<div style="color: #1296db" class="back-cbr-list" onclick="backCbrList()">
+					<span>返回</span>
+				</div>
+			</div>
+			<div class="iframe-content">
+				<!-- <form action="http://www.rrsbt.com/uploadNoLoginFile.do" onchange="ss()" method="post" enctype="multipart/form-data">
+					<input name="idPicFront" value="123" type="file">
+					<button type="submit" >提交</button>
+				</form> -->
+				<div id="cbr">
+					<div id="cbr-list">
+
+					</div>
+
+				</div>
+				<div id="addCbr" class="cbr-form column" style="display: none;">
+					<form action="" class="form-horizontal cform" id="cbrForm" onsubmit="return false;" method="post">
+						<div class="form-group row ">
+							<label for="cbrName" class="col-4 control-label">名字</label>
+							<div class="col-8">
+								<input name="cbrName" type="text" class="form-control" id="cbrName" placeholder="请输入名字" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="mobile" class="col-4 control-label">手机</label>
+							<div class="col-8">
+								<input pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
+								 name="mobile" type="text" class="form-control input-lg" id="mobile" placeholder="请输入手机" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="idNum" class="col-4 control-label">身份证号</label>
+							<div class="col-8">
+								<input pattern="^([0-9]){7,18}(x|X)?$" name="idNum" type="text" class="form-control" id="idNum" placeholder="请输入身份证号"
+								 required>
+							</div>
+						</div>
+						<div class="form-group row id-container">
+							<img onclick="fInput()" src="images/front.png" alt="">
+							<div onclick="fInput()">
+								<span>本人身份证正面照片</span>
+								<p>请确保照片的内容完整并清晰可见，身份证必须在有效期内</p>
+							</div>
+							<input style="display: none;" name="idPicFront" id="frontcard_file" type="file" multiple onchange="doUpload('frontcard_file','frontcard_file','frontpath')"
+							 value="" />
+						</div>
+						<div class="form-group row id-container">
+							<img onclick="bInput()" src="images/back.png" alt="">
+							<div onclick="bInput()">
+								<span>本人身份证背面照片</span>
+								<p>请确保照片的内容完整并清晰可见，身份证必须在有效期内</p>
+							</div>
+							<input style="display: none;" name="idPicBack" id="backcard_file" type="file" multiple onchange="doUpload('backcard_file','backcard_file','backpath')"
+							 value="" />
+						</div>
+						<div class="form-group row">
+							<label for="hkCity" class="col-4 control-label">户口城市</label>
+							<div class="col-8">
+								<input placeholder="请输入省份与城市" required name="hkCity" type="text" class="form-control" id="hkCity">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="hkXingzhi" class="col-4 control-label">户口性质</label>
+							<div class="col-8">
+								<!-- <input required name="hkXingzhi" type="text" class="form-control" id="hkXingzhi"> -->
+								<select name="hkXingzhi" id="hkXingzhi" class="form-control">
+									<option value="">请选择户口性质</option>
+									<option value="农村">农村</option>
+									<option value="城市">城市</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="email" class="col-4 control-label">电子邮箱</label>
+							<div class="col-8">
+								<input required name="email" type="email" class="form-control" id="email">
+							</div>
+						</div>
+						<div class="row btn-cbr">
+							<button type="button" onclick="backCbrList()" class="btn btn-default">取消</button>
+							<button type="submit" id="cbrSaveBtn" onsubmit="return false" onclick="cbrSave()" class="btn btn-primary">保存</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+	</body>
+	<script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/mock.js"></script>
+	<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/center-cbr.js"></script>
+</html>

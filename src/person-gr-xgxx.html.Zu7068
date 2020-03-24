@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>企业社保</title>
+		<!-- Stylesheets -->
+		<!-- inject:css -->
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom-animate.css">
+		<link rel="stylesheet" href="css/flaticon.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/hover.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/owl.css">
+		<link rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href="css/rMediaQuery.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/sui.nav.css">
+		<link rel="stylesheet" href="css/tabs.css">
+		<!-- endinject -->
+
+		<!--Favicon-->
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+		<link rel="icon" href="images/favicon.png" type="image/x-icon">
+		<!-- Responsive -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+		<style>
+			.fr-content-div{
+				background-color: #FFFFFF;
+				margin-top: 117px;
+				border-radius: 10px;
+			}
+			.fr-company-h{
+				width: 100%;
+				padding: 0px 40px;
+			}
+			.fr-company-text{
+				width: 60%;
+			}
+			
+			.fr-cbxx-btn{
+				margin-left: -24%;
+			}
+			.fr-cbxx-btn{
+				margin-top: 50px;
+			}
+			input::-webkit-input-placeholder {
+			    color: #9D9D9D;
+			    font-size: 14px;
+			}
+			.sb-item{
+				line-height: 30px;
+			}
+			@media screen and (min-width: 750px) {
+				.sb-item input {
+					width: 60%;
+				}
+				.sb-container{
+					width: 60%;
+				}
+				.sb-item{
+					margin-bottom: 20px;
+				}
+				.fr-company-h{
+					margin-bottom: 0px;
+				}
+				.sb-info{
+					margin-top: 40px;
+					min-height: 0px;
+				}
+				
+			}
+			@media screen and (max-width: 750px) {
+				
+				.p-title{
+					margin-top: 10px;
+				}
+				#csb-form{
+					margin-top:0px;
+				}
+				.fr-cbxx-btn{
+					margin-left: 4% !important;
+					margin-top: 50px;
+				}
+				#csb-form{
+					margin-top: 20px !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body style="background: #F6F6F6;">
+		<div class="page-wrapper">
+			<!-- Preloader -->
+			<div class="preloader"></div>
+
+			<!-- Main Header-->
+			<header class="main-header header-style-one">
+				<!--Header-Upper-->
+				<div class="header-upper">
+					<div class="auto-container">
+						<div class="clearfix">
+							<div class="pull-left logo-outer">
+								<div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div>
+							</div>
+							<div class="pull-right upper-right clearfix">
+								<div class="nav-outer clearfix">
+
+									<!-- Main Menu -->
+									<nav class="main-menu navbar-expand-md">
+										<div class="navbar-header">
+											<img src="./images/footer-logo.png" alt="">
+											<div class="row" id="">
+												<div id="userInfo">
+													<div class="dropdown-toggle" data-toggle="dropdown">
+														<img src="images/avatar.png" alt="">
+														<ul class="dropdown-menu">
+															<div class="logout fr-user-hover">admin</div>
+															<div class="logout fr-user-hover">个人社保</div>
+															<li role="separator" class="divider logout fr-user-hover"></li>
+															<li class="fr-end-hover"><a href="#" class="logout ">退出登录</a></li>
+														</ul>
+													</div>
+												</div>
+												<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+												 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+											</div>
+										</div>
+
+										<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+											<ul class="navigation clearfix">
+												<li class="current"><a href="index.html">首页</a>
+
+												</li>
+												<li><a href="price.html">价格介绍</a>
+												</li>
+												<li class="dropdown"><a href="">快速入口</a>
+													<ul>
+														<li><a href="#" onclick="isLogin('person-sb')">个人社保</a></li>
+														<li><a href="#" onclick="isLogin('company-sb')">企业社保</a></li>
+													</ul>
+												</li>
+												<li><a href="contact.html">联系我们</a></li>
+												<li class="ps-info"><a href="#" onclick="isLogin('center')">个人中心</a></li>
+												<li class="login-li"><a href="" data-toggle="modal" data-target="#myModal">登录</a></li>
+												<li class="user-li row fr-user-d-t">
+													<div class="avatar dropdown-toggle" data-toggle="dropdown">
+														<img src="images/avatar.png" alt="">
+														<ul class="dropdown-menu">
+															<div class="logout"> <span class="uname">欢迎您,<a  onclick="toUserInfo()" class="fr-user-name"></a></span></div>
+															<!-- <div class="logout fr-user-hover">个人社保</div> -->
+															<li role="separator" class="divider logout fr-user-hover"></li>
+															<li class="logout fr-end-hover"><a href="#" class="fr-end-hover">退出登录</a></li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--End Header Upper-->
+			</header>
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="container" style="pointer-events: auto;">
+						<div class="card-wrap">
+							<div class="card border-0 shadow card--register" id="register">
+								<button type="button" class="close x-btn" style="position: relative;left: 140px;" data-dismiss="modal" aria-hidden="true">×
+								</button>
+								<div class="card-body">
+									<h2 class="card-title">注册</h2>
+									<form class="fr-from-wid" onsubmit="return false;" id="registerForm">
+										<div class="form-group">
+											<input name="userName" class="form-control" type="text" placeholder="用户名" required="required" />
+										</div>
+										<div class="form-group">
+											<input name="password" class="form-control" type="password" placeholder="密码" required="required" />
+										</div>
+										<div class="form-group">
+											<input name="ensurePassword" class="form-control" type="password" placeholder="确认密码" required="required" />
+										</div>
+										<div class="form-group">
+											<input name="email" class="form-control" type="email" placeholder="email" required="required" />
+										</div>
+										<div class="form-group">
+											<input name="vcode" class="form-control" type="text" placeholder="验证码" required="required" />
+										</div>
+										<p><a class="js-btn" data-target="login" href="#">返回登录</a></p>
+										<button class="reg-btn btn-lg" style="color: #fff !important;width: 100%;transition: all .4s;border-radius: 50px;margin-top: 20px;background-color: #ffb700;">
+											注册
+										</button>
+									</form>
+								</div>
+							</div>
+							<div class="card border-0 shadow card--login is-show" id="login">
+								<button type="button" class="close x-btn" style="position: relative;left: 140px;" data-dismiss="modal" aria-hidden="true">×
+								</button>
+								<div class="card-body">
+									<h2 class="card-title">登录</h2>
+									<!-- <p>第三方登录</p>
+								        <p class="badge-wrap"><a class="badge"><i class="fab fa-facebook-f"></i></a><a class="badge"><i
+								              class="fab fa-google"></i></a><a class="badge"><i class="fab fa-twitter"></i></a><a class="badge"><i
+								              class="fab fa-github"></i></a></p>
+								        <p>或用邮箱登录</p> -->
+									<form class="fr-from-wid" onsubmit="return false;" id="loginForm">
+										<div class="form-group">
+											<input class="form-control" type="text" placeholder="用户名" name="userName" value="15005919722" required="required" />
+										</div>
+										<div class="form-group">
+											<input class="form-control" type="password" placeholder="密码" name="password" value="111111" required="required" />
+										</div>
+										<div>
+											<p style="float: left;font-size: 16px;"><a class="js-btn" data-target="register" href="#">注册</a></p>
+											<p style="float: right;font-size: 16px;"><a href="#">忘记密码?</a></p>
+										</div>
+										<button class="log-btn btn-lg">登录</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-success row" style="margin: 0 auto;width: 100%;justify-content: center;position: fixed; top: -55px">
+				<div>
+					<span class="alertMsg"></span>
+				</div>
+	
+			</div>
+			<script>
+				var baseUrl = 'http://www.rrsbt.com/clientServices.do?iscrypt=1'
+				function isLogin(url) {
+					if (sessionStorage.getItem('login')) {
+						location.href = url + '.html'
+					} else{
+						$('#myModal').modal('show')
+			
+					}
+				}
+			</script>
+
+			<!--End Main Header -->
+			<!--Form Back Drop-->
+			<div class="form-back-drop"></div>
+			<div class="column sb-container fr-content-div">
+				<div class="fr-company-h">
+					<div class="row sb-item p-title">
+						<div class="shuxian"></div>
+						<span>个人信息</span>
+					</div>
+				</div>
+				<div class="column sb-info">
+					<form id="csb-form">
+						<div class="row sb-item">
+							<span class="fr-cbxx">姓名</span>
+							<input class="form-control" type="text" placeholder="请输入姓名" required="required" />
+						</div>
+						<div class="row sb-item">
+							<span class="fr-cbxx">用户名</span>
+							<div class="fr-person-gr-xxx" >yinfengrui</div>
+						</div>
+						<div class="row sb-item">
+							<span class="fr-cbxx">手机号</span>
+							<input class="form-control" type="text" placeholder="请输入手机号" required="required" />
+						</div>
+						<div class="row sb-item">
+							<span class="fr-cbxx">邮箱号</span>
+							<input class="form-control" type="text" placeholder="请输入邮箱号" required="required" />
+						</div>
+					</form>		
+				</div>
+				<button onclick="infoModify()" class="btn btn-primary save-sb fr-cbxx-btn">
+					提交
+				</button>
+			</div>
+			
+
+		</div>
+		<!--End pagewrapper-->
+
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+		
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- Footer Bottom -->
+			<div class="footer-bottom">
+				<div class="auto-container">
+					<div class="copyright">2015-2016 © 福建鼎天富人力资源有限公司 版权所有 闽ICP备18023690号</div>
+				</div>
+			</div>
+
+		</footer>
+
+		<!-- End Main Footer -->
+		
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+		<script src="js/mock.js"></script>
+		<script src="js/utils.js" charset="UTF-8"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.fancybox.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/owl.js"></script>
+		<script src="js/appear.js"></script>
+		<script src="js/wow.js"></script>
+		<script src="js/element-in-view.js"></script>
+		<script src="js/paroller.js"></script>
+		<script src="js/particles.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/tabs.js"></script>
+		<script src="js/login.js"></script>
+		<script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var currentShowCity = 0;
+			// 获取城市接口
+			// getCity()
+			// 初始化省份选项
+			initProvinces()
+
+			function addCsb() {
+				var data = {};
+				var t = $('#csb-form').serializeArray();
+				$.each(t, function() {
+					data[this.name] = this.value;
+				});
+			}
+			
+			function infoModify() {
+				// window.location.href = 'person-gr-xgxx.html'
+			}
+		</script>
+	</body>
+</html>

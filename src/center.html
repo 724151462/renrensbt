@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<!-- Stylesheets -->
+		<!-- inject:css -->
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom-animate.css">
+		<link rel="stylesheet" href="css/flaticon.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/hover.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/owl.css">
+		<link rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href="css/rMediaQuery.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/sui.nav.css">
+		<link rel="stylesheet" href="css/tabs.css">
+		<!-- endinject -->
+
+		<!--Favicon-->
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+		<link rel="icon" href="images/favicon.png" type="image/x-icon">
+		<!-- Responsive -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	</head>
+
+	<body>
+		<div class="page-wrapper center-bg">
+			<!-- Preloader -->
+			<div class="preloader"></div>
+
+			<!-- Main Header-->
+			@@include('header.html')
+			<!--End Main Header -->
+			<!--Form Back Drop-->
+			<div class="form-back-drop"></div>
+			<div class="container center-con">
+				<div class="row" style="justify-content: space-around;">
+					<div class="important pc">
+						<ul class="column">
+							<li class="row pc-tab-active">
+								<img class="icon1" width="20" src="./images/icon1.png" />
+								<p>订单管理</p>
+							</li>
+							<li class="row">
+								<img class="icon2" width="20" src="./images/icon2.png" />
+								<p>我的参保人</p>
+							</li>
+							<li class="row">
+								<img class="icon3" width="20" src="./images/icon3.png" />
+								<p>我的消息</p>
+							</li>
+						</ul>
+					</div>
+					<div class="row important mobile" style="height: 100px;width: 100%;margin-top: 98px;background-color: #F8F9FA">
+						<ul class="row">
+							<li class="column">
+								<div><img class="icon1" width="30" src="./images/icon1-active.png" /></div>
+								<p class="center-menutab-active">订单管理</p>
+							</li>
+							<li class="column">
+								<div><img class="icon2" width="30" src="./images/icon2.png" /></div>
+								<p>我的参保人</p>
+							</li>
+							<li class="column">
+								<div><img class="icon3" width="30" src="./images/icon3.png" /></div>
+								<p>我的消息</p>
+							</li>
+						</ul>
+					</div>
+					<div class="center-contents">
+						<div class="cl">
+							<iframe id="order" src="center-order.html"></iframe>
+						</div>
+						<div class="cl" style="display: none">
+							<iframe id="cbr" src="center-cbr.html"></iframe>
+						</div>
+						<div class="cl" style="display: none">
+							<iframe id="message" src="center-message.html"></iframe>
+						</div>
+				</div>
+				
+
+			</div>
+			<!--End pagewrapper-->
+
+			<!--Scroll to top-->
+			<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+			
+			<!-- Main Footer -->
+			
+			<!-- End Main Footer -->
+			
+			<script src="js/jquery.js"></script>
+			<script src="js/mock.js"></script>
+			<script src="js/utils.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/jquery.fancybox.js"></script>
+			<script src="js/jquery-ui.js"></script>
+			<script src="js/owl.js"></script>
+			<script src="js/appear.js"></script>
+			<script src="js/wow.js"></script>
+			<script src="js/element-in-view.js"></script>
+			<script src="js/paroller.js"></script>
+			<script src="js/particles.js"></script>
+			<script src="js/app.js"></script>
+			<script src="js/script.js"></script>
+			<script src="js/tabs.js"></script>
+			<script src="js/login.js"></script>
+			<!-- <script src="js/handleFooter.js"></script> -->
+			<script type="text/javascript">
+				$(function() {
+					handlePreloader()
+					if (!sessionStorage.getItem('centerTab')) {
+						sessionStorage.setItem('centerTab', 0)
+					}
+					let actIndex = sessionStorage.getItem('centerTab')
+					
+					// getCity()
+					var timer;
+					
+						if (document.body.clientWidth < 768) {
+							var tabNum = $(".mobile").find("li");
+							$('.important').eq(0).attr('style', 'display: none')
+							mobTabsChange($(tabNum).eq(actIndex),actIndex)
+						} else {
+							var tabNum = $(".pc").find("li");
+							$('.important').eq(1).attr('style', 'display: none')
+							pcTabsChange($(tabNum).eq(actIndex),actIndex)
+						}
+						console.log(tabNum)
+					
+
+					function mobTabsChange(that, index) {
+						$(tabNum).find('p').removeClass('center-menutab-active')
+						that.find('p').addClass('center-menutab-active')
+						console.log(that.find('img'))
+						if (index == 0) {
+							$('.icon1').attr('src', './images/icon1-active.png')
+							$('.icon2').attr('src', './images/icon2.png')
+							$('.icon3').attr('src', './images/icon3.png')
+							$('#order').attr('src', 'center-order.html');
+						} else if (index == 1) {
+							$('.icon2').attr('src', './images/icon2-active.png')
+							$('.icon1').attr('src', './images/icon1.png')
+							$('.icon3').attr('src', './images/icon3.png')
+							$('#cbr').attr('src', 'center-cbr.html');
+						} else {
+							$('.icon2').attr('src', './images/icon2.png')
+							$('.icon1').attr('src', './images/icon1.png')
+							$('.icon3').attr('src', './images/icon3-active.png')
+						}
+						tabShow(that, index)
+					}
+
+					function pcTabsChange(that, index) {
+						console.log(that)
+						$(tabNum).removeClass('pc-tab-active')
+						$(tabNum).find('p').removeClass('center-menutab-active')
+						console.log(that)
+						that.addClass('pc-tab-active')
+						that.find('p').addClass('center-menutab-active')
+						if (index == 0) {
+							$('.icon1').attr('src', './images/icon1-active.png')
+							$('.icon2').attr('src', './images/icon2.png')
+							$('.icon3').attr('src', './images/icon3.png')
+							$('#order').attr('src', 'center-order.html');
+							
+						} else if (index == 1) {
+							$('.icon2').attr('src', './images/icon2-active.png')
+							$('.icon1').attr('src', './images/icon1.png')
+							$('.icon3').attr('src', './images/icon3.png')
+							$('#cbr').attr('src', 'center-cbr.html');
+						} else {
+							$('.icon2').attr('src', './images/icon2.png')
+							$('.icon1').attr('src', './images/icon1.png')
+							$('.icon3').attr('src', './images/icon3-active.png')
+						}
+						tabShow(that, index)
+					}
+
+					function tabShow(that, index) {
+						var contentNum = $(".center-contents").children();
+						console.log(contentNum)
+						$(contentNum).eq(index).css({
+							"display": "block"
+						});
+						sessionStorage.setItem('centerTab', index)
+						$(contentNum).eq(index).siblings().css({
+							"display": "none"
+						});
+						that.find("a").css({
+							"background": "#FFF",
+							"color": "#fff"
+						});
+						that.siblings().find("a").css({
+							"background": "#fff",
+							"color": "black"
+						});
+					}
+					$(tabNum).each(function(index) {
+						console.log($(this))
+						if (document.body.clientWidth < 768) {
+							$(this).hover(function() {
+								var that = $(this)
+								timer = window.setTimeout(
+									mobTabsChange(that, index), 100)
+							}, function() {
+								window.clearTimeout(timer);
+							})
+						} else {
+							$(this).click(function() {
+								var that = $(this)
+								timer = window.setTimeout(
+									pcTabsChange(that, index), 100)
+							})
+						}
+
+					})
+				})
+			</script>
+	</body>
+</html>

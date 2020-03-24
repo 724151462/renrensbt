@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人社保</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        td {
+            text-align: right;
+        }
+        
+        .fr-content-div {
+            background-color: #FFFFFF;
+            margin-top: 117px;
+            border-radius: 10px;
+        }
+        
+        .fr-person-info-h {
+            width: 100%;
+            padding: 0px 20px;
+            margin-bottom: 20px;
+        }
+        
+        .fr-person-info-text {
+            width: 60%;
+        }
+        
+        .fr-person-info-btn {
+            margin-left: -6%;
+        }
+        
+        .tc {
+            margin-top: 0px;
+            width: 120px;
+        }
+        
+        .fr-person-info-wid {
+            width: 100% !important;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #9D9D9D;
+            font-size: 14px;
+        }
+        
+        .fr-flex-conter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .fr-preson-info-fw {
+            margin-bottom: 20px;
+        }
+        
+        .fr-person-bz {
+            color: #6f6f6f;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .sb-item input {
+                width: 200px;
+            }
+            .sb-container {
+                width: 60%;
+            }
+            .sb-item {
+                margin-bottom: 20px;
+            }
+            .fr-person-info-h {
+                margin-bottom: 0px;
+                margin-top: 20px;
+            }
+            .sb-item select {
+                width: 37%;
+            }
+        }
+        
+        @media screen and (max-width: 750px) {
+            .fr-person-info-btn {
+                margin-left: 0%;
+            }
+            .p-title {
+                margin-top: 10px;
+            }
+            #csb-form {
+                margin-top: 0px;
+            }
+            .fr-person-info-h {
+                padding: 0px 23px;
+            }
+            .tc {
+                margin-top: 10px !important;
+            }
+            .fr-person-info-btn {
+                margin-left: 16% !important;
+            }
+            .fr-person-sblx {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #F8F9FA;">
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+        <!--End Main Header -->
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+        <div class="column sb-container fr-content-div">
+            <div class="column sb-info fr-person-info-wid ">
+                <div>
+                    <div class="fr-person-info-h">
+                        <div class="row sb-item p-title">
+                            <div class="shuxian"></div>
+                            <span>参保信息</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="sb-item">
+                        <span class="fr-cbxx">参保城市</span>
+                        <div class="" id="sbCity">
+
+                        </div>
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-cbxx">参保类型</span>
+                        <select id="ctype" onchange="typeChange()" class="form-control fr-person-sblx" name="cbType" style="border: 1px solid #DADADF;">
+								<option class="cb-type" value="">选择类型</option>
+							</select>
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-cbxx">社保基数</span>
+                        <input onchange="insureCount();" id="yanglao" type="text" class="form-control" placeholder="请选择参保类型">
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-cbxx">缴纳公积金</span>
+                        <div class="">
+                            <div class="btn-group gjj-btns" role="group" aria-label="...">
+                                <button type="button" id="buyggjBtn" class="btn btn-default btn-sm">买</button>
+                                <button type="button" class="btn btn-default btn-sm">不买</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sb-item ggj-price" style="display: none;">
+                        <span class="fr-cbxx">购买金额</span>
+                        <div class="">
+                            <input onchange="insureCount();" id="housing" type="text" style="width: 80%;" class="form-control" placeholder="请选择参保类型">
+                        </div>
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-cbxx">起始月份</span>
+                        <div class="">
+                            <div class="btn-group stime-btns" role="group" aria-label="...">
+                                <button type="button" id="stime" class="btn btn-default btn-sm"></button>
+                                <button type="button" id="etime" class="btn btn-default btn-sm"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-cbxx">缴纳月数</span>
+                        <span class="cbr-list sb-month" id="ordermonth">
+
+							</span>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="fr-person-info-h">
+                        <div class="row sb-item p-title">
+                            <div class="shuxian"></div>
+                            <span>月费用明细</span>
+                        </div>
+                    </div>
+                    <table class="table table-condensed" style="display: none;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>险种</th>
+                                <th style="text-align: right;">个人(元)</th>
+                                <th style="text-align: right;">企业(元)</th>
+                                <th style="text-align: right;">小计(元)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">养老</th>
+                                <td id="yanglao_person">100.00</td>
+                                <td id="yanglao_company">200.00</td>
+                                <td id="yanglao_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">医疗</th>
+                                <td id="yiliao_person">100.00</td>
+                                <td id="yiliao_company">200.00</td>
+                                <td id="yiliao_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">失业</th>
+                                <td id="shiye_person">100.00</td>
+                                <td id="shiye_company">200.00</td>
+                                <td id="shiye_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">工伤</th>
+                                <td id="gongshang_person">100.00</td>
+                                <td id="gongshang_company">200.00</td>
+                                <td id="gongshang_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">生育</th>
+                                <td id="shengyu_person">100.00</td>
+                                <td id="shengyu_company">200.00</td>
+                                <td id="shengyu_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">残保金</th>
+                                <td id="canbaojin_person"></td>
+                                <td id="canbaojin_company"></td>
+                                <td id="canbaojin_total">1000.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">公积金</th>
+                                <td id="housing_person">100.00</td>
+                                <td id="housing_company">200.00</td>
+                                <td id="housing_total">300.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">参保费</th>
+                                <td></td>
+                                <td></td>
+                                <td id="insurance_amount">1000.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">管理费</th>
+                                <td></td>
+                                <td></td>
+                                <td id="manager_cost">1000.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">实付费</th>
+                                <td></td>
+                                <td></td>
+                                <td id="actual_amount">2000.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="fr-person-info-h">
+                        <div class="row sb-item p-title">
+                            <div class="shuxian"></div>
+                            <span>参保人信息</span>
+                        </div>
+                    </div>
+                    <div class="sb-item">
+                        <div class="avatar">
+                            <img src="images/avatar.png" alt="">
+                        </div>
+                        <div class="column al-start">
+                            <span id="cbUsername"></span>
+                            <span id="idNum"></span>
+                        </div>
+                    </div>
+                    <div class="sb-item">
+                        <span class="fr-person-bz">备注</span>
+                        <input type="text" class="form-control" id="remaker" placeholder="补充说明">
+                    </div>
+                </div>
+            </div>
+
+            <div class="column save-sb">
+                <div class="fr-preson-info-fw">
+                    <input type="checkbox" id="isreadChk" onchange="readchkChange()" value="1" name="isreadChk">
+                    <a href="#" onclick="showXy()">我同意《人人社保通用户服务协议》</a>
+                </div>
+                <div class="row fr-preson-info-fw">
+                    <button class="btn btn-default" type="button">取消</button>
+                    <button id="orderSaveBtn" disabled="disabled" onclick="saveCbInfo()" class="btn btn-primary mar-l-10">
+							保存
+						</button>
+                </div>
+            </div>
+            <div class="modal fade" id="sb-xy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="container" style="pointer-events: auto; background: #FFF;">
+                        <div id="agreement" class="">
+                            <div class="">
+                                <h1 class="mui-center mui-title">人人社保通用户服务协议</h1>
+                            </div>
+                            <div class="">
+                                <p style="font-size:16px;">鼎天富在此特别提醒用户认真阅读、充分理解本《服务协议》（下称《协议》）中各条款，如果您对本服务条款中条款有疑问的，您可以与鼎天富客服联系咨询，由其向您解释条款内容。</p>
+                                <p class="title">人人社保通用户服务协议</p>
+                                <p>
+                                    <span class="type">第一条 定义及解释</span><br> 1、本服务协议是甲方与“福建鼎天富人力资源有限公司”之间关于由甲方选择，乙方提供的人人社保通服务的协议。
+                                    <br> 2、以下所称“甲方”指的是愿意接受人人社保通用户服务协议（以下所称“本协议”）的各项约定并在其规定下使用人人社保通服务的用户以及委托甲方在本协议下使用人人社保通服务的用户。
+                                    <br> 3、以下所称“乙方”或“鼎天富”指的是福建鼎天富人力资源有限公司。
+                                    <br> 4、以下所称“本服务”指的是由鼎天富提供的“人人社保通服务”，即：社会保险、公积金代收代缴服务。
+                                    <br> 5、以下所称“费用”指的是用户应支付给翰德各项费用之总和，包括但不限于用户选择服务所涉及到社会保险、住房公积金、鼎天富服务费及其他政府部门强制收取的费用（如残疾人就业保障金）等。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第二条 注意事项申明</span><br> 1、 用户在使用服务时应保证身份的真实性、正确性及完整性，如果资料发生变化，您应及时更改。用户您应保护密码及账号的机密安全。您应对任何人利用您的密码及账号所进行的活动负完全的责任。鼎天富无法对非法或未经您授权使用您账号及密码的行为作出甄别，因此鼎天富不承担任何责任。在此，您同意并承诺做到∶
+                                    <br> 2、当您的密码或账号遭到未获授权的使用，或者发生其他任何安全问题时，您会立即有效通知到鼎天富。
+                                    <br> 3、当您每次上网或使用其他服务完毕后，会将有关账号安全退出。
+                                    <br> 4、送服务及其它信息，该信息一经发出，即视为送达。
+                                    <br> 5、您对本协议的接受即接受全部服务条款的约束，包括接受鼎天富对任一服务条款随时所做的任何修改。本《协议》可由鼎天富随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本网站查阅最新版协议条款。在鼎天富修改《协议》条款后，如果用户不接受修改后的条款，请立即停止使用鼎天富提供的服务，用户继续使用鼎天富提供的服务将被视为已接受了修改后的协议。
+                                    <br> 6、只有符合下列条件之一的自然人或法人才能申请成为本网站用户，可以使用本网站的服务：
+                                    <br> 6.1 年满十八岁，并具有民事权利能力和民事行为能力的自然人；<br> 6.2 无民事行为能力人或限制民事行为能力人应经过其监护人的同意；<br> 6.3根据中国法律、法规、行政规章成立并合法存在的机关、企事业单位、社团组织和其他组织。无法人资格的单位或组织不当注册为本网站用户的，其与本网站之间的协议自始无效，本网站一经发现，有权立即终止对该用户的服务，并追究其使用本网站服务的一切法律责任。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第三条 协议确认与接受</span><br> 1、甲方必须完全同意以下所有服务条款并完成总费用的支付，才能享受本服务。
+                                    <br> 2、甲方应根据本协议的约定及时足额支付服务费和代收代缴（付）总费用，包括但不限于社会保险、公积金、服务费、其他费用（行政性收费，如工本费、工会费、残疾人就业保障金等费用）。乙方在收到甲方支付的服务费和代收代缴（付）总费用后，按照参保地当地政策，向甲方提供自最近可参保月起的社会保险、公积金代办参保服务，否则乙方有权拒绝为甲方提供相关服务。
+                                    <br> 3、代收代缴（付）总费用将根据甲方选择的参保项目，按照参保地当地政策规定具体来收取。社会保险、公积金等费用根据甲方选择的缴费基数、参保周期等确定。如遇参保地当地政策、规定调整（包括但不限于缴费基数、比例调整、参保项目、参保条件、待遇享受条件、缴费起征点发生变化等），则按新政策、规定执行。
+                                    <br> 4、服务费用根据甲方自行选择的价格套餐，按乙方列明的价格予以支付。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第四条 乙方的权利与义务</span><br> 1、乙方应根据本协议约定，为甲方提供相应的社会保险、公积金代办参保服务，甲方及其委托参保成员与乙方不存在任何劳动关系，且乙方对甲方及其委托参保成员不具有任何基于劳动关系的权利义务。甲方及甲方委托人员享受的相关的社保及公积金的福利待遇按相关政府经办部门具体规定为准。
+                                    <br> 2、乙方应按照本协议的约定，在收到甲方支付的服务费用及代收代缴（付）总费用后，向甲方开具合法的票据，并按照国家规定和当地政府规定的时间及时为甲方提供各项服务。因甲方迟延支付各项费用致使乙方未能及时为甲方提供相关服务所产生的后果，由甲方自行承担。
+                                    <br> 3、在甲方未按照约定数额支付全部费用之前，乙方有权不向甲方提供服务或者终止服务。
+                                    <br> 4、甲方支付各项费用后，因乙方过错导致甲方未能享有本协议约定服务，从而导致甲方损失的，由乙方承担损失赔偿责任。
+                                    <br> 5、乙方为了保证甲方的社保权益，乙方会在甲方选择的参保城市选择当地具备资质的社保代办服务商进行服务。乙方将根据甲方的选择，按照参保地有关政策规定为甲方选择服务商代办社会保险、公积金的参保及缴费手续。乙方应督促服务商按时将甲方交付的费用缴纳给相关社会保险、公积金等征缴机构。
+                                    <br> 6、乙方所提供的相关服务信息随国家政策变动而做相应调整，社会保险、公积金的基数/起征点/比例等也会根据各地政策的调整而做调整，如遇社会保险、公积金基数或起征点调整，缴费基数或比例调整致使社会保险、公积金费用上升的，甲方在接到乙方通知后，应在规定的时间内将相应的费用及时足额支付至乙方，乙方按照政府规定办理结算。本条规定不因本协议的解除或终止等原因而免除甲方的义务或责任。甲方如未及时补足因此而产生的费用差额，乙方有权暂停或终止本协议。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第五条 甲方的权利与义务</span><br> 1、甲方应向乙方提供准确无误的参保人员身份信息，包括参保人员的姓名、身份证号码、户口性质、缴费基数或税前工资数、缴纳城市等重要信息并对其负责，发生变化时及时通过乙方的客服热线通知乙方，否则产生的任何损失由甲方自行负责。当甲方提供的参保信息与社保、公积金征缴机构的信息不一致，造成与实际缴费金额不符的，甲方必须在规定的时间内及时补足差额，否则应承担由此引起的全部经济损失和法律责任。
+                                    <br> 2、甲方须在本协议规定的时间内向乙方足额支付服务费和各项代收代缴（付）费用。乙方没有为甲方垫款的义务，若甲方逾期支付总费用或差额费用，乙方有权暂停全部或部分服务，并按照2‰每日标准向甲方收取违约金。若造成甲方相关业务不能正常办理、相关待遇不能正常享受，或甲方被相关行政管理部门征收滞纳金的，由甲方承担全部责任。
+                                    <br> 3、甲方在使用本服务中如遇到相关问题，可咨询乙方客户服务热线。
+                                    <br> 4、甲方向乙方足额支付服务费和各项代收代缴（付）费用后，若甲方执意要求取消社会保险、公积金代办服务，乙方将按照以下规则向甲方退款：①针对还未做派单处理的订单，乙方将在甲方提交退款申请的十个工作日内退还相应的代收代缴（付）费用（除服务费），但由此产生的银行转账等相关费用由甲方全部承担；②针对已做派单处理但仍有服务月未产生实际费用的订单，甲方可参照《人人社保通退款说明》申请退款。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第六条 保密</span><br> 1、甲乙双方应对本协议内容及相关内容负有严格的保密义务，否则应承担相应的违约责任和经济责任。
+                                    <br> 2、为服务甲方的目的，乙方可能通过使用甲方数据信息，向甲方提供服务，包括但不限于向甲方发出服务信息。
+                                    <br> 3、甲方的数据信息将在下述情况下部分或全部被披露：A、经甲方同意，向第三方披露；B、根据法律的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露；C、如果甲方出现违反中国有关法律法规的情况，需要向第三方披露；D、为提供甲方所需求的服务，而必须和第三方分享甲方数据信息。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第七条 免责条款</span><br> 1、乙方只是社会保险、公积金代办服务商，只负责为甲方提供社会保险、公积金代缴、代办相关服务，与甲方及其委托参保成员之间没有任何劳动关系，对甲方及其委托参保成员的行为不负责任，不承担甲方及委托人员的任何劳动纠纷和责任。甲方及其委托参保成员应为自己的一切行为负责，包括向乙方提供内容的真实性、合法性、准确性、有效性，以及承担因使用本服务而产生的任何结果。
+                                    <br> 2、乙方应按照本协议的约定，在收到甲方应支付的总费用后，按照国家规定和当地政府规定的时间及时为甲方及其参保成员代办社会保险、公积金。乙方没有为甲方垫款的义务，若甲方延迟支付总费用或差额费用，乙方有权暂停全部或部分服务。因甲方延迟支付总费用或差额费用致使乙方未能及时为甲方提供相关服务所产生的后果由甲方承担，乙方不承担任何责任。
+                                    <br> 3、乙方没有义务或责任核实甲方填写参保信息的真实性、准确性。因甲方提供参保信息有误、提供资料不符合要求等政策性原因，导致乙方在履行社会保险、公积金代办义务时延迟或无法办理等，甲方自己应承担由此引起的全部经济损失和法律责任，乙方不承担任何责任。
+                                    <br> 4、甲方应确保参保人员的社会保险、公积金缴纳状态为停缴状态，否则乙方无法为甲方办理相关代办事宜，如因此而产生的不利后果由甲方自行承担，乙方不承担任何责任。
+                                    <br> 5、凡曾患有恶性肿瘤、心脏病（心功能不全二级以上）、心肌梗塞、白血病、高血压（二级以上）、肝硬化、慢性阻塞性支气管疾病、脑血管疾病、慢性肾脏疾病、糖尿病、再生障碍性贫血、先天性疾病、精神病或者精神分裂、癫痫病，特定传染病、艾滋病、性病等其它重大疾病或者正住院、患病、已怀孕及全休、半休者一律不能使用本服务参保。如果属于这种情况所产生的费用，乙方不予办理报销，并有权暂停全部或部分服务。因此而产生的不利后果由甲方自行承担，乙方不承担任何责任。
+                                    <br> 6、对于不符合参保条件的，提交虚假信息而引起的法律责任，视为甲方行为，由甲方自行承担，乙方不承担任何责任。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第八条 违约责任</span><br> 1、本服务条款任何一方违约均须依法承担违约责任。如乙方当月已经为甲方成功代办社会保险、公积金参保后，相关费用乙方概不退还。
+                                    <br> 2、在任何情况下，乙方对服务条款所承担的违约赔偿责任总额不超过违约服务对应之服务费总额。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第九条 不可抗力</span><br> 1、因不可抗力或者其他意外事件，使得本服务条款的履行不可能、不必要或者无意义的，遭受不可抗力、意外事件的一方不承担责任。
+                                    <br> 2、不可抗力或者其他意外事件是指不能预见、不能克服、不能避免且对一方或者双方当事人造成重大影响的客观事件，包括但不限于自然灾害如洪水、地震、瘟疫流行等以及社会事件如战争、动乱、政府行为、电信主干线中断、黑客、网络堵塞、电信部门技术调整和政府管制等。
+                                </p>
+                                <br>
+                                <p>
+                                    <span class="type">第十条 生效、终止与其他</span><br> 1、 服务期限自乙方收到甲方足额支付的服务费及代收代缴（付）费用起生效。
+                                    <br> 2、 发生下列情形，本协议提前终止：
+                                    <br> A、甲乙双方协商一致提前终止的；
+                                    <br> B、甲方严重违反本服务条款（包括但不限于甲方未按照协议约定履行付款义务或甲方严重违反法律规定等），乙方有权提前终止本服务。
+                                    <br> 3、双方在履行本协议过程中发生的任何争议，均应由双方友好协商解决；协商不成的，可向乙方所在地的人民法院提起诉讼。
+                                    <br> 4、本协议的订立、执行和解释及争议的解决均适用中华人民共和国法律。未经双方协商一致或者根据本协议的约定，甲方双方中的任何一方不得单方解除本协议。双方任何一方单方解除协议的，都不因此免除对方的违约责任。
+                                </p>
+
+                                <span class="type">用户在此再次保证已经完全阅读并理解了上述协议并接受上述所有条款的约束，同意注册成为人人社保通会员。</span>
+                                <p style="line-height: 18px">
+                                    <span style="font-family: '微软雅黑', sans-serif; color:black;">&nbsp;</span>
+                                </p>
+                                <div style="display: flex;">
+                                    <button type="button" style="margin: 0 auto;" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">×
+													关闭
+												</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+    <!-- Main Footer -->
+    @@include('footer.html')
+
+    <!-- End Main Footer -->
+    <script src="js/jquery.js"></script>
+    <script src="js/mock.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/handleFooter.js"></script>
+    <script type="text/javascript">
+        //是否购买公积金
+        var isBuyGjj = 0
+            // 所有参保类型数组
+        var ls = []
+            // 选中的参保类型数据
+        var selectedData = {}
+            //保留小数位数
+        var fix = 2;
+        // 起缴时间
+        var sTime = ''
+        $(function() {
+            $('.sb-month').text(getQueryVariable('month'))
+            new Promise(function(resolve, reject) {
+                $.ajax(
+                    baseUrl,
+                    // 'http://leideqiang.w3.luyouxia.net/oa/clientServices.do?iscrypt=1',
+                    {
+                        data: `{"serviceId":"eu_2013V01insuranceUserApi","params": {"id": ${getQueryVariable('id')},"cityId": ${getQueryVariable('cityId')},"cost":${getQueryVariable('cost')},"month":${getQueryVariable('month')}}}`,
+                        dataType: 'json', //服务器返回json格式数据
+                        contentType: "application/json; charset=utf-8",
+                        type: 'post', //HTTP请求类型
+                        success: function(data) {
+                            ls = data.returnParams.paramDetail
+                            for (let i = 0; i < ls.length; i++) {
+                                $(`<option value="${ls[i].universalid}">${ls[i].insurancetype}</option>`).insertAfter(".cb-type");
+                            }
+                            $('#cbUsername').text(data.returnParams.insureUser.name)
+                            $('#idNum').text(data.returnParams.insureUser.idnum)
+                            console.log($('#manager_cost'))
+                            $('#manager_cost').text(data.returnParams.manager_cost)
+                            resolve()
+                        },
+                        error: function(xhr, type, errorThrown) {
+
+                        }
+                    });
+            }).then(() => {
+                handlePreloader();
+            })
+
+            $("#yanglao").attr('disabled', 'disabled')
+            $("#buyggjBtn").attr('disabled', 'disabled')
+        })
+        $('.gjj-btns').find('button').click(function() {
+            $('.gjj-btns').find('button').removeClass('btn-warning')
+            $(this).addClass('btn-warning')
+            if ($(this).text() == '买') {
+                $('.ggj-price').css('display', 'flex')
+                isBuyGjj = 1
+            } else {
+                $('.ggj-price').css('display', 'none')
+                isBuyGjj = 0
+            }
+        })
+        $('.stime-btns').find('button').click(function() {
+            $('.stime-btns').find('button').removeClass('btn-warning')
+            $(this).addClass('btn-warning')
+            sTime = $(this).text()
+        })
+
+        //城市
+        $('#sbCity').text(decodeURI(getQueryVariable('chName')))
+
+        //计算缴费起始月
+        var nd = new Date();
+        var y = nd.getFullYear();
+        var m = nd.getMonth() + 1;
+        var d = nd.getDate();
+
+        var insuranceday = "${parameter.insuranceday }";
+        if (d > insuranceday || d == insuranceday) {
+            m = m + 1;
+        }
+
+        if (m > 12 || m == 12) {
+            var nextm = m + 2 - 12;
+            var nexty = y + 1;
+            m = m - 12 + 1;
+            y = y + 1;
+        } else {
+            var nextm = m + 1;
+            var nexty = y;
+        }
+
+        if (m < 10) {
+            m = "0" + m;
+        }
+        if (nextm < 10) {
+            nextm = "0" + nextm;
+        }
+
+        var date1 = y + "-" + m;
+        var datevalue1 = y + "-" + m;
+        var date2 = nexty + "-" + nextm;
+        var datevalue2 = nexty + "-" + nextm;
+        $("#stime")[0].innerText = date1;
+        $("#etime")[0].innerText = date2;
+
+        let cbType = ''
+            // 改变社保类型发生的数据变化
+        function typeChange() {
+            $("#yanglao").removeAttr('disabled')
+            $("#buyggjBtn").removeAttr('disabled')
+            console.log($('#ctype').val())
+            console.log(ls)
+            selectedData = ls.find(v => v.universalid == $('#ctype').val())
+            console.log(selectedData)
+                //更改社保基数值
+            if (selectedData.yanglaomax == 0 || selectedData.yanglaomax == null) {
+                document.getElementById("yanglao").setAttribute("placeholder", "请输入" + selectedData.yanglaomin + "-无上限");
+            } else {
+                document.getElementById("yanglao").setAttribute("placeholder", "请输入" + selectedData.yanglaomin + "-" + selectedData.yanglaomax);
+            }
+            if (selectedData.housingmax == 0 || selectedData.housingmax == null) {
+                document.getElementById("housing").setAttribute("placeholder", "请输入" + selectedData.housingmin + "-无上限");
+            } else {
+                document.getElementById("housing").setAttribute("placeholder", "请输入" + selectedData.housingmin + "-" + selectedData.housingmax);
+            }
+        }
+
+        function checkForm() {
+            var yanglao = parseFloat(document.getElementById("yanglao").value);
+            var yanlaomin = parseFloat(selectedData.yanglaomin);
+            var yanlaomax = parseFloat(selectedData.yanglaomax);
+            if (yanlaomax == 0 || yanlaomax == null) {
+                if (yanglao < yanlaomin) {
+                    // alert("社保基数不在范围内");
+                    diyAlert('社保基数不在范围内', 'warning')
+                    return false;
+                }
+            } else {
+                if (yanglao < yanlaomin || yanglao > yanlaomax) {
+                    // alert("社保基数不在范围内");
+                    diyAlert('社保基数不在范围内', 'warning')
+                    return false;
+                }
+            }
+            var yanglao2 = document.getElementById("yanglao").value
+            if (yanglao2 == null || yanglao2 == "") {
+                // alert("请填写社保金额");
+                diyAlert('请填写社保金额', 'warning')
+                return false;
+            }
+            if (isBuyGjj == '1') {
+                var housing = parseFloat(document.getElementById("housing").value);
+                var housingmin = parseFloat(selectedData.housingmin);
+                var housingmax = parseFloat(selectedData.housingmax);
+                if (housingmax == 0 || housingmax == null) {
+                    if (housing < housingmin) {
+                        // alert("公积金基数不在范围内");
+                        diyAlert('公积金基数不在范围内', 'warning')
+                        return false;
+                    }
+                } else {
+                    if (housing < housingmin || housing > housingmax) {
+                        // alert("公积金基数不在范围内");
+                        diyAlert('公积金基数不在范围内', 'warning')
+                        return false;
+                    }
+                }
+                var housing2 = document.getElementById("housing").value
+                if (housing2 == null || housing2 == "") {
+                    // alert("请填写公积金金额");
+                    diyAlert('请填写公积金金额', 'warning')
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        //社保费用计算
+        function insureCount() {
+            if (!checkForm()) {
+                $('.table-condensed').hide()
+                return;
+            } else {
+                $('.table-condensed').show()
+            }
+            //养老
+            var yanglao = parseFloat($("#yanglao").val()); //养老缴费基数
+            var yanglaomin = parseFloat(selectedData.yanglaomin); //养老最小缴费基数
+            var yanglaomax = parseFloat(selectedData.yanglaomax); //养老最大缴费基数
+            var yanglao_person_percent = parseFloat(selectedData.yanglao_person_percent); //养老个人缴费百分比
+            var yanglao_company_percent = parseFloat(selectedData.yanglao_company_percent); //养老企业缴费百分比
+            var yanglao_person = parseFloat((yanglao * yanglao_person_percent / 100).toFixed(fix)); //养老个人缴费金额
+            var yanglao_company = parseFloat((yanglao * yanglao_company_percent / 100).toFixed(fix)); //养老企业缴费金额			
+            var yanglao_total = yanglao_person + yanglao_company;
+            $("#yanglao_person").text(yanglao_person.toFixed(fix));
+            $("#yanglao_company").text(yanglao_company.toFixed(fix));
+            $("#yanglao_total").text(yanglao_total.toFixed(fix));
+
+            //医疗
+            var yiliaomin = parseFloat(selectedData.yiliaomin); //医疗缴费最小基数
+            var yiliaomax = parseFloat(selectedData.yiliaomax); //医疗缴费最大基数			
+            var yiliao_person_percent = parseFloat(selectedData.yiliao_person_percent); //医疗个人缴费百分比
+            var yiliao_company_percent = parseFloat(selectedData.yiliao_company_percent); //医疗企业缴费百分比
+            var yiliao_person = 0;
+            var yiliao_company = 0;
+            //医疗基数判断
+            if (yanglao <= yiliaomin) {
+                yiliao_person = parseFloat((yiliaomin * yiliao_person_percent / 100).toFixed(fix)); //医疗个人缴费金额
+                yiliao_company = parseFloat((yiliaomin * yiliao_company_percent / 100).toFixed(fix)); //医疗企业缴费金额	
+            } else {
+                yiliao_person = parseFloat((yanglao * yiliao_person_percent / 100).toFixed(fix)); //医疗个人缴费金额
+                yiliao_company = parseFloat((yanglao * yiliao_company_percent / 100).toFixed(fix)); //医疗企业缴费金额	
+            }
+            var yiliao_total = yiliao_person + yiliao_company;
+            $("#yiliao_person").text(yiliao_person.toFixed(fix));
+            $("#yiliao_company").text(yiliao_company.toFixed(fix));
+            $("#yiliao_total").text(yiliao_total.toFixed(fix));
+
+            //失业
+            var shiyemin = parseFloat(selectedData.shiyemin); //失业缴费最小基数
+            var shiyemax = parseFloat(selectedData.shiyemax); //失业缴费最大基数			
+            var shiye_person_percent = parseFloat(selectedData.shiye_person_percent); //失业个人缴费百分比
+            var shiye_company_percent = parseFloat(selectedData.shiye_company_percent); //失业企业缴费百分比
+            var shiye_person = 0;
+            var shiye_company = 0;
+            //失业基数判断
+            if (yanglao <= shiyemin) {
+                shiye_person = parseFloat((shiyemin * shiye_person_percent / 100).toFixed(fix)); //失业个人缴费金额
+                shiye_company = parseFloat((shiyemin * shiye_company_percent / 100).toFixed(fix)); //失业企业缴费金额	
+            } else {
+                shiye_person = parseFloat((yanglao * shiye_person_percent / 100).toFixed(fix)); //失业个人缴费金额
+                shiye_company = parseFloat((yanglao * shiye_company_percent / 100).toFixed(fix)); //失业企业缴费金额	
+            }
+            var shiye_total = shiye_person + shiye_company;
+            $("#shiye_person").text(shiye_person.toFixed(fix));
+            $("#shiye_company").text(shiye_company.toFixed(fix));
+            $("#shiye_total").text(shiye_total.toFixed(fix));
+
+            //工伤
+            var gongshangmin = parseFloat(selectedData.gongshangmin); //工伤缴费最小基数
+            var gongshangmax = parseFloat(selectedData.gongshangmax); //工伤缴费最大基数			
+            var gongshang_person_percent = parseFloat(selectedData.gongshang_person_percent); //工伤个人缴费百分比
+            var gongshang_company_percent = parseFloat(selectedData.gongshang_company_percent); //工伤企业缴费百分比
+            var gongshang_person = 0;
+            var gongshang_company = 0;
+            //工伤基数判断
+            if (yanglao <= gongshangmin) {
+                gongshang_person = parseFloat((gongshangmin * gongshang_person_percent / 100).toFixed(fix)); //工伤个人缴费金额
+                gongshang_company = parseFloat((gongshangmin * gongshang_company_percent / 100).toFixed(fix)); //工伤企业缴费金额	
+            } else {
+                gongshang_person = parseFloat((yanglao * gongshang_person_percent / 100).toFixed(fix)); //工伤个人缴费金额
+                gongshang_company = parseFloat((yanglao * gongshang_company_percent / 100).toFixed(fix)); //工伤企业缴费金额	
+            }
+            var gongshang_total = gongshang_person + gongshang_company;
+            $("#gongshang_person").text(gongshang_person.toFixed(fix));
+            $("#gongshang_company").text(gongshang_company.toFixed(fix));
+            $("#gongshang_total").text(gongshang_total.toFixed(fix));
+
+            //生育
+            var shengyumin = parseFloat(selectedData.shengyumin); //工伤缴费最小基数
+            var shengyumax = parseFloat(selectedData.shengyumax); //工伤缴费最大基数			
+            var shengyu_person_percent = parseFloat(selectedData.shengyu_person_percent); //工伤个人缴费百分比
+            var shengyu_company_percent = parseFloat(selectedData.shengyu_company_percent); //工伤企业缴费百分比
+            var shengyu_person = 0;
+            var shengyu_company = 0;
+            //工伤基数判断
+            if (yanglao <= shengyumin) {
+                shengyu_person = parseFloat((shengyumin * shengyu_person_percent / 100).toFixed(fix)); //工伤个人缴费金额
+                shengyu_company = parseFloat((shengyumin * shengyu_company_percent / 100).toFixed(fix)); //工伤企业缴费金额	
+            } else {
+                shengyu_person = parseFloat((yanglao * shengyu_person_percent / 100).toFixed(fix)); //工伤个人缴费金额
+                shengyu_company = parseFloat((yanglao * shengyu_company_percent / 100).toFixed(fix)); //工伤企业缴费金额	
+            }
+            var shengyu_total = shengyu_person + shengyu_company;
+            $("#shengyu_person").text(shengyu_person.toFixed(fix));
+            $("#shengyu_company").text(shengyu_company.toFixed(fix));
+            $("#shengyu_total").text(shengyu_total.toFixed(fix));
+
+            //公积金
+            //判断是否买公积金
+            var housing_person_percent = parseFloat(selectedData.housing_person_percent); //工伤个人缴费百分比
+            var housing_company_percent = parseFloat(selectedData.housing_company_percent); //工伤企业缴费百分比
+            var housing_person = 0;
+            var housing_company = 0;
+            var housing_total = 0;
+            if (isBuyGjj == 1) {
+                housing_person = parseFloat(($("#housing").val() * housing_person_percent / 100).toFixed(fix));
+                housing_company = parseFloat(($("#housing").val() * housing_company_percent / 100).toFixed(fix));
+                housing_total = housing_person + housing_company;
+                $("#housing_person").text(housing_person.toFixed(fix));
+                $("#housing_company").text(housing_company.toFixed(fix));
+                $("#housing_total").text(housing_total.toFixed(fix));
+            } else {
+                housing_person = 0;
+                housing_company = 0;
+                housing_total = 0;
+                $("#housing_person").text("0");
+                $("#housing_company").text("0");
+                $("#housing_total").text("0");
+            }
+
+            //大病医疗
+            var dabingyiliao_person = parseFloat(selectedData.dabingyiliao_person);
+            var dabingyiliao_company = parseFloat(selectedData.dabingyiliao_company);
+            var is_dabingyiliao = selectedData.is_dabingyiliao;
+            if (is_dabingyiliao == "2") {
+                var dabingyiliaomin = parseFloat(selectedData.dabingyiliaomin); //大病医疗缴费最小基数
+                var dabingyiliaomax = parseFloat(selectedData.dabingyiliaomax); //大病医疗缴费最大基数
+                //大病医疗基数判断
+                if (yanglao <= dabingyiliaomin) {
+                    dabingyiliao_person = parseFloat((dabingyiliaomin * dabingyiliao_person / 100).toFixed(fix)); //大病医疗个人缴费金额
+                    dabingyiliao_company = parseFloat((dabingyiliaomin * dabingyiliao_company / 100).toFixed(fix)); //大病医疗企业缴费金额
+                } else {
+                    dabingyiliao_person = parseFloat((yanglao * dabingyiliao_person / 100).toFixed(fix)); //大病医疗个人缴费金额
+                    dabingyiliao_company = parseFloat((yanglao * dabingyiliao_company / 100).toFixed(fix)); //大病医疗企业缴费金额	
+                }
+            }
+            var dabingyiliao_total = dabingyiliao_person + dabingyiliao_company;
+            $("#dabingyiliao_person").text(dabingyiliao_person.toFixed(fix));
+            $("#dabingyiliao_company").text(dabingyiliao_company.toFixed(fix));
+            $("#dabingyiliao_total").text(dabingyiliao_total.toFixed(fix));
+
+            //残保金
+            var canbaojin_person = parseFloat(selectedData.canbaojin_person);
+            var canbaojin_company = parseFloat(selectedData.canbaojin_company);
+            var canbaojin_total = canbaojin_person + canbaojin_company;
+            $("#canbaojin_person").text(canbaojin_person.toFixed(fix));
+            $("#canbaojin_company").text(canbaojin_company.toFixed(fix));
+            $("#canbaojin_total").text(canbaojin_total.toFixed(fix));
+
+
+            //参保费
+            var ordermonth = $("#ordermonth").text();
+            var insurance_amount = ordermonth * (yanglao_total + yiliao_total + shiye_total + gongshang_total + shengyu_total +
+                housing_total + canbaojin_total) + dabingyiliao_total;
+
+            $("#insurance_amount").text(insurance_amount.toFixed(fix));
+
+            //管理费
+            // 			var manager_cost = ($("#itemfee").val() - $("#discount").val()* $("#ordermonth").val())*$("#ordermonth").val();
+            //   			$("#manager_cost").text(manager_cost.toFixed(fix));
+            var manager_cost = parseFloat($("#manager_cost").text());
+            //$("#manager_cost").text(manager_cost.toFixed(fix));
+            console.log(manager_cost)
+                //实付款
+            var actual_amount = insurance_amount + manager_cost;
+            $("#actual_amount").text(actual_amount.toFixed(fix));
+        }
+
+        function readchkChange() {
+            var value = $('#isreadChk').is(':checked')
+            console.log(value)
+            if (value) {
+                $("#orderSaveBtn").removeAttr("disabled")
+            } else {
+                $("#orderSaveBtn").attr("disabled", "disabled");
+            }
+        }
+
+        function saveCbInfo() {
+            if ($("#ctype").find("option:selected").text() == '选择类型') {
+                // alert('请选择参保类型')
+                diyAlert('请选择参保类型', 'warning')
+                return
+            }
+            if (!checkForm()) {
+                return;
+            }
+            if (!sTime) {
+                // alert('请选择缴纳月份')
+                diyAlert('请选择缴纳起始月份', 'warning')
+                return
+            }
+            let data = {};
+            data.id = getQueryVariable('id')
+            data.universalid = selectedData.universalid
+            data.cbType = $("#ctype").find("option:selected").text();
+            data.cbBaseNum = $('#yanglao').val()
+            data.gjjAmount = $('#housing').val() || ''
+            data.sTime = sTime
+            data.cbCity = getQueryVariable('cityId')
+            data.month = getQueryVariable('month')
+            data.remark = $('#remaker').val() || ''
+            data.operator = JSON.parse(sessionStorage.getItem('login')).useId
+            data.manager_cost = $('#manager_cost').text()
+                // console.log(data)
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                data: `{"serviceId":"eu_2013V01addInsureOrderApi","params": ${JSON.stringify(data)}}`,
+                success: function(data) {
+                    if (data.returnCode == 1) {
+                        // alert('订单提交成功')
+                        diyAlert('订单提交成功', 'warning')
+                        localStorage.setItem('centerTab', 0)
+                        location.href = 'center.html'
+                    }
+                }
+            })
+        }
+
+        function showXy() {
+            $('#sb-xy').modal('show')
+        }
+    </script>
+</body>
+
+</html>

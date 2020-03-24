@@ -1,0 +1,207 @@
+<header class="main-header header-style-one">
+    <!--Header-Upper-->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="clearfix">
+                <div class="pull-left logo-outer">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo.png" alt="" title=""></a>
+                    </div>
+                </div>
+                <div class="pull-right upper-right clearfix">
+                    <div class="nav-outer clearfix">
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md">
+                            <div class="navbar-header">
+                                <img src="./images/footer-logo.png" alt="">
+                                <div class="row" id="">
+                                    <div id="userInfo" style="margin-right: 10px;">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="images/avatar.png" alt="">
+                                            <ul class="dropdown-menu">
+                                                <div onclick="toUserInfo()" class="fr-user-hover mar-l-10" id="mobUsername">admin</div>
+                                                <li role="separator" class="divider logout fr-user-hover"></li>
+                                                <li class="fr-end-hover"><a href="#" class="logout ">退出登录</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+                                </div>
+                            </div>
+
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="index.html">首页</a>
+
+                                    </li>
+                                    <li><a href="price.html">价格介绍</a>
+                                    </li>
+                                    <li class="dropdown"><a href="">快速入口</a>
+                                        <ul>
+                                            <li><a href="#" onclick="isLogin('person-sb')">个人社保</a></li>
+                                            <li><a href="#" onclick="isLogin('company-sb')">企业社保</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li class="ps-info"><a href="#" onclick="isLogin('center')">个人中心</a></li>
+                                    <li class="login-li"><a href="" data-toggle="modal" data-target="#myModal">登录</a></li>
+                                    <li class="user-li row fr-user-d-t">
+                                        <div class="avatar dropdown-toggle" data-toggle="dropdown">
+                                            <img src="images/avatar.png" alt="">
+                                            <ul class="dropdown-menu">
+                                                <div> <span class="uname">欢迎您,<a  onclick="toUserInfo()" class="fr-user-name" id="pcUsername"></a></span></div>
+                                                <!-- <div class="logout fr-user-hover">个人社保</div> -->
+                                                <li role="separator" class="divider logout fr-user-hover"></li>
+                                                <li class="logout fr-end-hover"><a href="#" class="fr-end-hover">退出登录</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Header Upper-->
+</header>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="container" style="pointer-events: auto;">
+            <div class="card-wrap">
+                <div class="card border-0 shadow card--register" id="register">
+                    <button type="button" class="close x-btn" style="position: relative;left: 140px;" data-dismiss="modal" aria-hidden="true">×
+					</button>
+                    <div class="card-body">
+                        <h2 class="card-title">注册</h2>
+                        <form class="fr-from-wid" onsubmit="return false;" id="registerForm">
+                            <div class="form-group">
+                                <input name="userName" class="form-control" type="text" placeholder="用户名" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input name="password" class="form-control" type="password" placeholder="密码" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input name="ensurePassword" class="form-control" type="password" placeholder="确认密码" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input name="email" class="form-control" type="email" placeholder="email" required="required" />
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <input style="width: 55%;" name="mobile" class="form-control" type="text" placeholder="手机号码" required="required" />
+                                <button onclick="getYZM()" style="position: absolute;left: 58%;top: 4px" class="btn btn-sm btn-primary" type="button" id="yzmBtn">获取验证码</button>
+                            </div>
+                            <div class="form-group">
+                                <input name="vcode" class="form-control" type="text" placeholder="验证码" required="required" />
+                            </div>
+                            <p><a class="js-btn" data-target="login" href="#">返回登录</a></p>
+                            <button class="reg-btn btn-lg" style="color: #fff !important;width: 100%;transition: all .4s;border-radius: 50px;margin-top: 20px;background-color: #ffb700;">
+								注册
+							</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card border-0 shadow card--login is-show" id="login">
+                    <button type="button" class="close x-btn" style="position: relative;left: 140px;" data-dismiss="modal" aria-hidden="true">×
+					</button>
+                    <div class="card-body">
+                        <h2 class="card-title">登录</h2>
+                        <!-- <p>第三方登录</p>
+					        <p class="badge-wrap"><a class="badge"><i class="fab fa-facebook-f"></i></a><a class="badge"><i
+					              class="fab fa-google"></i></a><a class="badge"><i class="fab fa-twitter"></i></a><a class="badge"><i
+					              class="fab fa-github"></i></a></p>
+					        <p>或用邮箱登录</p> -->
+                        <form class="fr-from-wid" onsubmit="return false;" id="loginForm">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="用户名" name="logUserName" value="" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" placeholder="密码" name="logPassword" value="" required="required" />
+                            </div>
+                            <div>
+                                <p style="float: left;font-size: 16px;"><a class="js-btn" data-target="register" href="#">注册</a></p>
+                                <p style="float: right;font-size: 16px;"><a href="person-pwd-modify.html">忘记密码?</a></p>
+                            </div>
+                            <button class="log-btn btn-lg">登录</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success row" style="margin: 0 auto;width: 100%;justify-content: center;position: fixed; top: -55px">
+    <div>
+        <span class="alertMsg"></span>
+    </div>
+
+</div>
+<script>
+    var baseUrl = 'http://www.rrsbt.com/clientServices.do?iscrypt=1'
+        // var baseUrl = 'http://leideqiang.w3.luyouxia.net/oa/clientServices.do?iscrypt=1'
+        // var baseUrl = 'http://leideqiang.w3.luyouxia.net/insurance/clientServices.do?iscrypt=1'
+    function isLogin(url) {
+        if (sessionStorage.getItem('login')) {
+            sessionStorage.setItem('nowPage', url)
+            location.href = url + '.html'
+        } else {
+            $('#myModal').modal('show')
+
+        }
+    }
+
+    function getYZM() {
+        if ($('[name="mobile"]').val() == '') {
+            diyAlert('手机号不能为空', 'warning')
+            return
+        } else if (!telTest($('[name="mobile"]').val())) {
+            diyAlert('请输入正确的手机号', 'warning')
+            return
+        }
+        $.ajax({
+            url: baseUrl,
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            // jsonp: "callback",
+            data: `{"serviceId":"eu_2013V01sendSmsVcodeApi","params": {"mobile":${$('[name="mobile"]').val()}}}`,
+            success: function(data) {
+                if (data.returnCode == 1) {
+                    let s = 5
+                    let timer = setInterval(() => {
+                        if (s == 0) {
+                            s = '获取验证码'
+                            $('#yzmBtn').removeAttr('disabled')
+                            clearInterval(timer)
+                            $('#yzmBtn').text(s)
+                        } else {
+                            s -= 1
+                            $('#yzmBtn').attr('disabled', 'disabled')
+                            $('#yzmBtn').text(s + "秒后获取")
+                        }
+
+                    }, 1000)
+                }
+            }
+        })
+
+
+        // $('#yzmBtn').text()
+    }
+
+    function telTest(string) {
+        var pattern = /^1[34578]\d{9}$/;
+        if (pattern.test(string)) {
+            return true;
+        }
+        console.log('check mobile phone ' + string + ' failed.');
+        return false;
+    }
+</script>

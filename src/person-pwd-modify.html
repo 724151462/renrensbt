@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>修改密码</title>
+    <!-- Stylesheets -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom-animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/owl.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rMediaQuery.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sui.nav.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <!-- endinject -->
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .fr-content-div {
+            background-color: #FFFFFF;
+            margin-top: 117px;
+            border-radius: 10px;
+        }
+        
+        .fr-company-h {
+            width: 100%;
+            padding: 0px 40px;
+        }
+        
+        .fr-company-text {
+            width: 60%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-left: -24%;
+        }
+        
+        .fr-cbxx-btn {
+            margin-top: 50px;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #9D9D9D;
+            font-size: 14px;
+        }
+        
+        .sb-item {
+            line-height: 30px;
+        }
+        
+        @media screen and (min-width: 750px) {
+            .sb-item input {
+                width: 60%;
+            }
+            .sb-container {
+                width: 60%;
+            }
+            .sb-item {
+                margin-bottom: 20px;
+            }
+            .fr-company-h {
+                margin-bottom: 0px;
+            }
+            .sb-info {
+                margin-top: 40px;
+                min-height: 0px;
+            }
+            .yzm-btn {
+                position: absolute;
+                left: 100%;
+                top: 4px
+            }
+        }
+        
+        @media screen and (max-width: 750px) {
+            .p-title {
+                margin-top: 10px;
+            }
+            #csb-form {
+                margin-top: 0px;
+            }
+            .fr-cbxx-btn {
+                margin-left: 4% !important;
+                margin-top: 50px;
+                margin-bottom: 5px;
+            }
+            #csb-form {
+                margin-top: 20px !important;
+            }
+            .pwd-form {
+                margin: 0 auto;
+            }
+            .yzm-btn {
+                position: absolute;
+                left: 78%;
+                top: 4px
+            }
+            .sb-item input {
+                width: 60%;
+            }
+            .sb-item>span {
+                width: 100px;
+            }
+            .mob-input {
+                width: 40% !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #F6F6F6;">
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        @@include('header.html')
+		<!--End Main Header -->
+        <!--Form Back Drop-->
+        <div class="form-back-drop"></div>
+        <div class="column sb-container fr-content-div">
+            <div class="fr-company-h">
+                <div class="row sb-item p-title">
+                    <div class="shuxian"></div>
+                    <span>重置密码</span>
+                </div>
+            </div>
+            <div class="column sb-info">
+                <form id="user-form" class="pwd-form">
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">新密码：</span>
+                        <input class="form-control" type="password" name="pwd" placeholder="请输入新密码" required="required" />
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">确认密码：</span>
+                        <input class="form-control" type="password" name="ensurepwd" placeholder="请输入新密码" required="required" />
+                    </div>
+                    <div class="row sb-item" style="position: relative;">
+                        <span class="fr-cbxx yzm-label">获取验证码：</span>
+                        <input id="mobile" name="mobile" class="form-control mob-input" type="text" placeholder="手机号码" required="required" />
+                        <button onclick="getYZM()" class="btn btn-sm btn-primary yzm-btn" type="button" id="pwdYzmBtn">获取验证码</button>
+                    </div>
+                    <div class="row sb-item">
+                        <span class="fr-cbxx">验证码：</span>
+                        <input name="pwdvcode" class="form-control" type="text" placeholder="验证码" required="required" />
+                    </div>
+                </form>
+            </div>
+            <button onsubmit="return false;" onclick="pwdModify()" class="btn btn-primary save-sb fr-cbxx-btn">
+					提交
+				</button>
+        </div>
+
+
+    </div>
+    <!--End pagewrapper-->
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+    	<!-- Footer Bottom -->
+    	<div class="footer-bottom">
+    		<div class="auto-container">
+    			<div class="copyright">2015-2016 © 福建鼎天富人力资源有限公司 版权所有 闽ICP备18023690号</div>
+    		</div>
+    	</div>
+
+    </footer>
+
+    <!-- End Main Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+    <script src="js/mock.js"></script>
+    <script src="js/utils.js" charset="UTF-8"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/element-in-view.js"></script>
+    <script src="js/paroller.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        handlePreloader()
+
+        function getYZM() {
+            console.log($('#mobile').val())
+            if ($('#mobile').val() == '') {
+                diyAlert('手机号不能为空', 'warning')
+                return
+            } else if (!telTest($('#mobile').val())) {
+                diyAlert('请输入正确的手机号', 'warning')
+                return
+            }
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                data: `{"serviceId":"eu_2013V01sendSmsVcodeApi","params": {"mobile":${$('#mobile').val()}}}`,
+                success: function(data) {
+                    if (data.returnCode == 1) {
+                        let s = 60
+                        let timer = setInterval(() => {
+                            if (s == 0) {
+                                s = '获取验证码'
+                                $('#pwdYzmBtn').removeAttr('disabled')
+                                clearInterval(timer)
+                                $('#pwdYzmBtn').text(s)
+                            } else {
+                                console.log($('#pwdYzmBtn').text())
+                                s -= 1
+                                $('#pwdYzmBtn').attr('disabled', 'disabled')
+                                $('#pwdYzmBtn').text(s + "秒后获取")
+                            }
+
+                        }, 1000)
+                    }
+                }
+            })
+
+
+            // $('#pwdYzmBtn').text()
+        }
+
+        function telTest(string) {
+            var pattern = /^1[34578]\d{9}$/;
+            if (pattern.test(string)) {
+                return true;
+            }
+            console.log('check mobile phone ' + string + ' failed.');
+            return false;
+        }
+
+        function pwdModify() {
+            if ($('[name="pwd"]').val() == '') {
+                diyAlert('请输入新密码', 'warning')
+                return
+            } else if ($('[name="ensurepwd"]').val() == '') {
+                diyAlert('请确认新密码', 'warning')
+                return
+            } else if ($('[name="pwdvcode"]').val() == '') {
+                diyAlert('请输入验证码', 'warning')
+                return
+            } else if ($('[name="pwd"]').val() != $('[name="ensurepwd"]').val()) {
+                diyAlert('两次输入密码不一致，请检查', 'warning')
+                return
+            }
+            $.ajax({
+                url: baseUrl,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                // jsonp: "callback",
+                // async: false,
+                data: `{"serviceId":"eu_2013V01editPasswordApi",
+                "params": {"phoneNumbe": "${$("#mobile").val()}","password": "${$('[name="pwd"]').val()}",
+                "vcode": "${$('[name="pwdvcode"]').val()}"}}`,
+                success: function(data) {
+                    if (data.returnCode == 1) {
+                        diyAlert('密码修改成功', 'success')
+                    } else {
+                        diyAlert('修改失败', 'warning')
+                    }
+                },
+                error: function(returndata) {
+                    diyAlert('网络错误', 'warning')
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
